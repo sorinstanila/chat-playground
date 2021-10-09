@@ -1,0 +1,21 @@
+{"properties": [
+  {
+    "name": "broker.username",
+    "type": "java.lang.String",
+    "description": "Set the broker username"
+  },
+  {
+    "name": "broker.password",
+    "type": "java.lang.String",
+    "description": "Set the broker system user password"
+  },
+  {
+    "name": "broker.host",
+    "type": "java.lang.String",
+    "description": "Set the broker url"
+  },
+  {
+    "name": "broker.port",
+    "type": "java.lang.String",
+    "description": "Set the broker port"
+  }]}

@@ -1,0 +1,45 @@
+version: '3'
+services:
+  artemis:
+    container_name: 'playground-artemis'
+    image: 'nicolamaza/activemq-artemis:2.17.0-alpine'
+    ports:
+      - '8161:8161'
+      - '61613:61616'
+    environment:
+        ARTEMIS_USERNAME: artemis
+        ARTEMIS_PASSWORD: artemis
+  activemq:
+    container_name: 'playground-activemq'
+    # image: 'symptoma/activemq:5.16.2'
+    image: 'rmohr/activemq:5.15.2'
+    ports:
+      - '8162:8161'
+      - '61614:61613'
+    environment:
+        ACTIVEMQ_USERNAME: system
+        ACTIVEMQ_PASSWORD: manager
+  activemq-upgrade:
+    container_name: 'playground-activemq-upgrade'
+    image: 'symptoma/activemq:5.16.2'
+    # image: 'rmohr/activemq:5.15.2'
+    ports:
+      - '8163:8161'
+      - '61615:61613'
+    environment:
+        ACTIVEMQ_USERNAME: system
+        ACTIVEMQ_PASSWORD: manager
+  rabbitmq:
+    container_name: 'playground-rabbitmq'
+    image: bitnami/rabbitmq
+    environment:
+        RABBITMQ_PLUGINS: 'rabbitmq_management,rabbitmq_management_agent,rabbitmq_mqtt,rabbitmq_stomp'
+        # this it the default of the image, this commented lines are for documentation only
+        # RABBITMQ_USERNAME: user
+        # RABBITMQ_PASSWORD: bitnami
+    ports:
+      - '61616:61613'
+      - '15672:15672'
+volumes:
+  maven-repo: null
+  database: null
